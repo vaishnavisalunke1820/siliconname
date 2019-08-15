@@ -1,0 +1,73 @@
+//CPP program of calculator using switch case 
+#include <iostream>	
+using namespace std;
+
+class Number		//creates a class Number
+{
+        int number1,number2;
+public:
+        char optr;		//stores opertors in character format
+        void accept();		//stores input from user
+        void addition();		//stores addition
+        void subtraction();		//stores subtraction
+        void multiplication();		//stores multiplication
+        void division();		//stores division
+};
+//Declaring functions outside the class using scope resolution operator
+void Number :: accept()		
+{
+        cout<<"\n Enter command as number1 operator number2(example : 1+2 , 1*2 , 1-2 , 1/2) :";
+        cin>> number1>> optr>> number2;
+}
+
+void Number :: addition()
+{
+        int sum;
+        sum=number1+number2;		//Calculates addition
+        cout<<"\nAddition is:"<<sum;		//Displays addition result
+}
+
+void Number :: subtraction()
+{
+        int sub;
+        sub=number1-number2;		//Calculates subtraction
+        cout<<"\nSubtraction is:"<<sub;			//Displays subtration result
+}
+
+void Number :: multiplication()
+{
+        int mul;
+        mul=number1*number2;		//Calculates multiplication
+        cout<<"\nMultiplication is:"<<mul;			//Displays multiplication result
+}
+
+void Number :: division()
+{
+        int div;
+        div=number1/number2;		//Calculates division
+        cout<<"\nDivision is:"<<div;			//Displays division result
+}
+
+int main()
+{
+        Number n;		//for class number an object is created as 'n'
+        n.accept();
+        switch(n.optr)
+         {
+        case '+':
+                n.addition();
+                break;
+        case '-':
+                n.subtraction();
+                break;
+        case '*':
+                n.multiplication();
+                break;
+        case '/':
+                n.division();
+                break;
+        default:
+                cout<<"The operator you entered is invalid....Please try again later...This operation is terminated...!";
+         }
+    return 0;
+}
