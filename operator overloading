@@ -1,0 +1,62 @@
+//Program of complex operator overloading 
+//where friend function is used only for insertion and extraction operator
+#include <iostream>
+using namespace std;
+class complex
+{
+	int real,img;		
+public:
+		complex(int r=0, int i=0)	//default constructor initialized to zero 0
+{
+		real=r;
+		img=i;
+}
+
+	complex operator+(complex c2)	//overloaded + operator
+	{
+		complex c3;
+		c3.real=real+c2.real;
+		c3.img=img+c2.img;
+		return c3;
+	}
+	complex operator*(complex c2)	//overloaded * operator
+	{
+		complex c4;
+		c4.real=real*c2.real;
+		c4.img=img*c2.img;
+		return c4;
+	}
+//friend function defined inside the class 
+	friend ostream &operator<<(ostream &out,const complex &c);	//friend function for insertion operator
+	friend istream &operator>>(istream &in,complex &c);		//friend fucntion for extraction operator
+};
+//friend function for insertion operator declared outside the class 
+ostream &operator<<(ostream &out,const complex &c)
+{
+	out<<c.real;
+	out<<"+i"<<c.img<<endl;
+	return out;
+}
+//friend function for extraction operator declared outside the class
+istream &operator>>(istream &in,complex &c)
+{
+	cout<<"\nPlease enter a real number : ";
+	in>>c.real;
+	cout<<"\nPlease enter an imaginary number : ";
+	in>>c.img;
+	return in;
+}
+int main()
+{
+	complex c1,c2,c3,c4;
+	cin>>c1>>c2;
+	cout<<"\nThe complex number you entered is : ";
+	cout<<c1;
+	c3=c1+c2;
+	cout<<"\nThe addition of complex number is : ";
+	cout<<c3;
+	c4=c1*c2;
+	cout<<"\nThe multiplication of complex number is : ";
+	cout<<c4;
+	return 0;
+}
